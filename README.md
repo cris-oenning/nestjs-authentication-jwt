@@ -1,73 +1,78 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Nest.Js Application with Authentication (Login System) using JWT Token
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This repository contains a Nest.Js project that implements an authentication system with JWT Tokens, utilizing the following features and technologies:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- Prisma with SQLite for data persistence
+- Visualization of the local database using Prisma Studio
+- Thunder Client extension for testing routes
+- Used libraries and dependencies:
 
-## Description
+# Dependencies and Usage
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- @nestjs/passport
+  @nestjs/passport is a Nest.Js module for authentication. It provides a flexible way to handle different authentication strategies, such as JWT, OAuth, and more.
 
-## Installation
+- @nestjs/jwt
+  @nestjs/jwt is a module that facilitates the creation and verification of JSON Web Tokens (JWT) for secure authentication and authorization in protected routes.
 
-```bash
-$ npm install
-```
+- bcrypt
+  The bcrypt library is used to securely hash and verify passwords. This helps protect user passwords stored in the database.
 
-## Running the app
+- class-validator
+  class-validator is a library that offers an easy way to validate TypeScript objects based on classes, ensuring that data meets certain criteria before processing.
 
-```bash
-# development
-$ npm run start
+- class-transformer
+  class-transformer allows you to transform and validate complex objects, such as database entities, into simpler representations like JSON objects, and vice versa.
 
-# watch mode
-$ npm run start:dev
+- passport and passport-related packages
+  passport is an authentication middleware for Node.js that works well with Nest.Js. The dependencies passport-jwt, passport-local, @types/passport-jwt, and @types/passport-local are used to implement different authentication strategies, such as JWT-based authentication and local authentication.
 
-# production mode
-$ npm run start:prod
-```
+# Execution Steps
 
-## Test
+Follow the steps below to run the application on your machine:
 
-```bash
-# unit tests
-$ npm run test
+1 - Clone the repository.
 
-# e2e tests
-$ npm run test:e2e
+2 - Install dependencies:
+Navigate to the project directory and execute the following command to install dependencies:
 
-# test coverage
-$ npm run test:cov
-```
+npm install
 
-## Support
+3 - Configure the Database:
+Make sure you have SQLite installed on your machine. Then, run migrations to create the database:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+npx prisma migrate dev
 
-## Stay in touch
+4 - Run Prisma Studio:
+Use Prisma Studio to visualize the database on localhost:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+npx prisma studio
 
-## License
+5 - Set Environment Variables:
+Rename the .env.example file to .env and fill in the environment variables as needed.
 
-Nest is [MIT licensed](LICENSE).
+6 - Run the Application:
+Start the development server:
+
+npm run start:dev
+
+# Using Thunder Client
+
+The Thunder Client extension in Visual Studio Code can be used to test the application's routes. Import the available requests from the thunder_client_requests.json file to start testing authentication functionalities.
+
+# Project Structure
+
+The project structure follows Nest.Js conventions:
+
+- src/auth: Contains components related to authentication (strategies, guards, controllers, and services).
+- src/user: Defines the user resource, including controllers and services to manage users.
+- src/app.module.ts: Main configuration file of the application.
+- src/main.ts: Entry point of the application.
+
+# Importance of Security
+
+Application security is of utmost importance. Make sure to follow best security practices when developing and deploying your Nest.Js project. Using JWT-based authentication, encrypting passwords, and validating inputs are some of the recommended practices to ensure the security of data and users.
+
+Always remember to keep your dependencies up to date and perform regular security audits.
+
+This project was developed based on the latest technologies and practices to ensure the security and efficiency of the application. Feel free to explore, contribute, and customize according to your needs.
